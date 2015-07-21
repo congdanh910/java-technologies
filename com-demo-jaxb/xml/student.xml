@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<student id="123">
+    <birthday>2015-07-21T18:10:45.892+07:00</birthday>
+    <address>Tien Giang</address>
+    <lastName>Ho</lastName>
+    <firstName>Danh</firstName>
+    <email>congdanh910@gmail.com</email>
+</student>

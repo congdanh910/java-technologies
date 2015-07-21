@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<classes>
+    <create_date>21/07/2015</create_date>
+    <id>8910</id>
+    <name>Class 1</name>
+    <students>
+        <student id="123">
+            <birthday>2015-07-21T18:10:45.892+07:00</birthday>
+            <address>Tien Giang</address>
+            <lastName>Ho</lastName>
+            <firstName>Danh</firstName>
+            <email>congdanh910@gmail.com</email>
+        </student>
+        <student id="456">
+            <birthday>2015-07-21T18:10:45.892+07:00</birthday>
+            <address>Tien Giang</address>
+            <lastName>Dang</lastName>
+            <firstName>Khanh</firstName>
+            <email>congdanh910@gmail.com</email>
+        </student>
+        <student id="789">
+            <birthday>2015-07-21T18:10:45.892+07:00</birthday>
+            <address>Tien Giang</address>
+            <lastName>Ho</lastName>
+            <firstName>Ngan</firstName>
+            <email>congdanh910@gmail.com</email>
+        </student>
+        <student id="10">
+            <birthday>2015-07-21T18:10:45.892+07:00</birthday>
+            <address>Tien Giang</address>
+            <lastName>Ho</lastName>
+            <firstName>Ngoc</firstName>
+            <email>congdanh910@gmail.com</email>
+        </student>
+    </students>
+</classes>

@@ -2,11 +2,13 @@ package com.demo.jaxb;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Date;
 
 /**
  * Created by CongDanh on 7/19/15.
  */
+@XmlType(propOrder = {"birthday","address","lastName","firstName","email"}) // sort elements
 @XmlRootElement
 public class Student {
 
@@ -76,5 +78,10 @@ public class Student {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    @Override
+    public String toString() {
+        return this.firstName + " " + this.lastName;
     }
 }
