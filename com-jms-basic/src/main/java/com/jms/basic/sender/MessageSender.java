@@ -19,8 +19,6 @@ public class MessageSender {
             connectionFactory = (ConnectionFactory) ic.lookup("jms/GlassFishBookConnectionFactory");
             queue = (Queue) ic.lookup("jms/GlassFishBookQueue");
 
-            System.out.println("ConnectionFactory type is " + connectionFactory + ", Queue : " + queue);
-
             Connection connection = connectionFactory.createConnection();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             messageProducer = session.createProducer(queue);
