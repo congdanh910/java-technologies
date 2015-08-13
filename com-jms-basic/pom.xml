@@ -9,7 +9,9 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <javaee.version>7.0</javaee.version>
+        <javaee.api.version>7.0</javaee.api.version>
+        <gf.client.version>4.1</gf.client.version>
+        <gf.mq.version>5.1</gf.mq.version>
     </properties>
 
     <dependencies>
@@ -17,7 +19,25 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>${javaee.version}</version>
+            <version>${javaee.api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.main.appclient</groupId>
+            <artifactId>gf-client</artifactId>
+            <version>${gf.client.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.mq</groupId>
+            <artifactId>imqjmsra</artifactId>
+            <version>${gf.mq.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.mq</groupId>
+            <artifactId>imqbroker</artifactId>
+            <version>${gf.mq.version}</version>
         </dependency>
 
         <dependency>
@@ -27,4 +47,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>com-jms-basic</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

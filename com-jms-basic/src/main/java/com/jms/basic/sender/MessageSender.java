@@ -1,22 +1,26 @@
 package com.jms.basic.sender;
 
-import javax.annotation.Resource;
 import javax.jms.*;
+import javax.naming.InitialContext;
 
 /**
  * Created by CongDanh on 8/8/15.
  */
 public class MessageSender {
 
-    @Resource(mappedName = "jms/GlassFishBookConnectionFactory")
-    private static ConnectionFactory connectionFactory;
-    @Resource(mappedName = "jms/GlassFishBookQueue")
-    private static Queue queue;
+    private ConnectionFactory connectionFactory;
+    private Queue queue;
 
     public void produceMessages() {
         MessageProducer messageProducer;
         TextMessage textMessage;
         try {
+            InitialContext ic = new InitialContext();
+            connectionFactory = (ConnectionFactory) ic.lookup("jms/GlassFishBookConnectionFactory");
+            queue = (Queue) ic.lookup("jms/GlassFishBookQueue");
+
+            System.out.println("ConnectionFactory type is " + connectionFactory + ", Queue : " + queue);
+
             Connection connection = connectionFactory.createConnection();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             messageProducer = session.createProducer(queue);
@@ -37,7 +41,7 @@ public class MessageSender {
             messageProducer.close();
             session.close();
             connection.close();
-        } catch (JMSException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
