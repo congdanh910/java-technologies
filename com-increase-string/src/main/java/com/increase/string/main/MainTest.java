@@ -16,7 +16,7 @@ public class MainTest {
 //        System.out.println(lastLine);
         Generator generator = new Generator();
         for (int i = 0; i <= 1000; i++) {
-            String createString = generator.pickStub(null);
+            String createString = generator.getNextString(null);
             System.out.println("createString : " + createString);
         }
     }

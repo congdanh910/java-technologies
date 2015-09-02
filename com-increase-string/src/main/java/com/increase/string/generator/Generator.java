@@ -11,27 +11,27 @@ public class Generator {
     public Generator() {
     }
 
-    public String pickStub(String specificPrefix) throws IOException {
-        String prefix = createPrefix(specificPrefix);
-        String nextStub = StringUtils.EMPTY;
+    public String getNextString(String prefix) throws IOException {
+        String pre = createPrefix(prefix);
+        String next = StringUtils.EMPTY;
         try {
-            String lastStub = HandleFile.getLastLine();
-            if (lastStub == null) {
+            String last = HandleFile.getLastLine();
+            if (last == null) {
                 HandleCharset handleCharset = BuildingCharset.buildCharset();
-                nextStub = prefix + handleCharset.toString(BigDecimal.ZERO);
+                next = pre + handleCharset.toString(BigDecimal.ZERO);
             } else {
-                nextStub = nextStub(lastStub, prefix);
+                next = nextString(last, prefix);
             }
-            HandleFile.saveLastString(nextStub);
+            HandleFile.saveLastString(next);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return nextStub;
+        return next;
     }
 
-    private String nextStub(String stub, String prefix) {
+    private String nextString(String last, String prefix) {
         HandleCharset handleCharset = BuildingCharset.buildCharset();
-        return handleCharset.incrementStringWithPrefix(stub, prefix);
+        return handleCharset.incrementWithPrefix(last, prefix);
     }
 
     private String createPrefix(String specificPrefix) throws IOException {

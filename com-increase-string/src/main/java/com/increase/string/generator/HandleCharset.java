@@ -58,7 +58,7 @@ public class HandleCharset {
         }
         max_exponent -= 1;
 
-        String str = "";
+        String str = StringUtils.EMPTY;
         int index = 0;
         for (int exponent = max_exponent; exponent >= 0; exponent--) {
             diff = BigDecimal.ZERO;
@@ -75,14 +75,14 @@ public class HandleCharset {
         return str;
     }
 
-    public String incrementString(String str) {
+    public String increase(String str) {
         BigDecimal currentAsInt = toNumber(str);
         BigDecimal nextAsInt = currentAsInt.add(BigDecimal.ONE);
         return toString(nextAsInt);
     }
 
-    public String incrementStringWithPrefix(String before, String prefix) {
-        String after = incrementString(before);
+    public String incrementWithPrefix(String before, String prefix) {
+        String after = increase(before);
         // if the first character of the string has changed, format a new number entirely
         if (before.charAt(0) == after.charAt(0)) {
             return after;

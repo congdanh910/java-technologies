@@ -5,15 +5,14 @@ import java.util.List;
 
 public class BuildingCharset {
 
-    public static final String DEFAULT_CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    public static final String DEFAULT_CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 
     public BuildingCharset() {
     }
 
     public static HandleCharset buildCharset() {
-        String characters = DEFAULT_CHARS;
-        List<Character> charList = createCharacterList(characters);
+        List<Character> charList = createCharacterList(DEFAULT_CHARACTERS);
         return new HandleCharset(charList);
     }
 
