@@ -1,0 +1,14 @@
+template: Hello, %s!
+defaultName: Stranger
+
+database:
+  driverClass: com.mysql.jdbc.Driver
+  user: root
+  password: ""
+  url: jdbc:mysql://localhost:3306/dropwizard
+  properties:
+    charSet: UTF-8
+  maxWaitForConnection: 1s
+  validationQuery: "/* Model DB Health Check */ SELECT 1"
+  minSize: 8
+  maxSize: 32
