@@ -69,10 +69,10 @@ public class Person {
     @Override
     public String toString () {
         return "[ Person is " +
-               "[Id = " + this.id + "]" +
-               "[Name = " + this.name + "]" +
-               "[Age = " + this.age + "]" +
+               "[Id = " + this.id + "], " +
+               "[Name = " + this.name + "], " +
+               "[Age = " + this.age + "], " +
                "[Class = " + this.className + "]" +
-               "]";
+               " ]";
     }
 }
