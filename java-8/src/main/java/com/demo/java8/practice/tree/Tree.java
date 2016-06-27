@@ -60,17 +60,25 @@ public class Tree {
     private static void print (Node node) {
         if ( node.getChildren().size() > 0 ) {
             node.getChildren().forEach(child -> {
-                System.out.println("\t \t" + child + "\n");
+                System.out.println(tabGenerate(node.getDeep()) + child.shortToString() + "\n");
                 print(child);
             });
-        }
-        else {
-            System.out.println("\t \t" + node + "\n");
         }
     }
 
     private static String tabGenerate (int num) {
         return IntStream.rangeClosed(0, num).mapToObj(j -> "\t").collect(Collectors.joining(" "));
+    }
+
+    private static void updateDepth (Node node, int currentDepth) {
+        if ( node == null ) {
+            return;
+        }
+        node.setDeep(currentDepth);
+        final int increaseDepth = currentDepth + 1;
+        node.getChildren().forEach(ch -> {
+            updateDepth(ch, increaseDepth);
+        });
     }
 
     public static void main (String[] args) {
@@ -90,7 +98,8 @@ public class Tree {
         List<Node> root = nodes.parallelStream().filter(n -> StringUtils.isBlank(n.getParentId())).collect(Collectors.toList());
 
         root.forEach(nr -> {
-            System.out.println(nr + "\n");
+            updateDepth(nr, 0);
+            System.out.println(nr.shortToString() + "\n");
             print(nr);
         });
 

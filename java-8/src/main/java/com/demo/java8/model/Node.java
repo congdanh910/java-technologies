@@ -92,7 +92,16 @@ public class Node {
                "[Id = " + this.id + "], " +
                "[Name = " + this.name + "], " +
                "[ParentId = " + this.parentId + "], " +
+               "[Depth = " + this.deep + "], " +
                "[Children = " + ((this.children != null) ? this.children.size() : 0) + "]" +
                " ]";
+    }
+
+    public String shortToString () {
+        return "[ " +
+               "Id : " + this.id + ", " +
+               "Name : " + this.name + ", " +
+               "Parent Id : " + this.parentId +
+               "]";
     }
 }
