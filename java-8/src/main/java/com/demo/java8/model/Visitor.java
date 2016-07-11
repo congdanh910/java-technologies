@@ -18,22 +18,18 @@
 
 package com.demo.java8.model;
 
-public class Person {
+import com.google.gson.annotations.SerializedName;
 
+public class Visitor {
     private String id;
-    private String name;
-    private int    age;
-    private String className;
-
-    public Person (String id, String name, int age, String className) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.className = className;
-    }
-
-    public Person () {
-    }
+    @SerializedName("first_name")
+    private String firstName;
+    @SerializedName("last_name")
+    private String lastName;
+    private String email;
+    private String gender;
+    @SerializedName("ip_address")
+    private String ipAddress;
 
     public String getId () {
         return id;
@@ -43,37 +39,55 @@ public class Person {
         this.id = id;
     }
 
-    public String getName () {
-        return name;
+    public String getFirstName () {
+        return firstName;
     }
 
-    public void setName (String name) {
-        this.name = name;
+    public void setFirstName (String firstName) {
+        this.firstName = firstName;
     }
 
-    public int getAge () {
-        return age;
+    public String getLastName () {
+        return lastName;
     }
 
-    public void setAge (int age) {
-        this.age = age;
+    public void setLastName (String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getClassName () {
-        return className;
+    public String getEmail () {
+        return email;
     }
 
-    public void setClassName (String className) {
-        this.className = className;
+    public void setEmail (String email) {
+        this.email = email;
+    }
+
+    public String getGender () {
+        return gender;
+    }
+
+    public void setGender (String gender) {
+        this.gender = gender;
+    }
+
+    public String getIpAddress () {
+        return ipAddress;
+    }
+
+    public void setIpAddress (String ipAddress) {
+        this.ipAddress = ipAddress;
     }
 
     @Override
     public String toString () {
-        return "[ Person is " +
+        return "[ Visitor is " +
                "[Id = " + this.id + "], " +
-               "[Name = " + this.name + "], " +
-               "[Age = " + this.age + "], " +
-               "[Class = " + this.className + "]" +
+               "[First name = " + this.firstName + "], " +
+               "[Last name = " + this.lastName + "], " +
+               "[Email = " + this.email + "], " +
+               "[Gender = " + this.gender + "]" +
+               "[Ip address = " + this.ipAddress + "]" +
                " ]";
     }
 }
