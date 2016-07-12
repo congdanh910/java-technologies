@@ -83,8 +83,13 @@ public class WhatIsMap {
         System.out.println("id = " + id + ", id2 = " + id2);
     }
 
-    public static void merge2MapsEx (Map<String, Visitor> mapLessThan1000, Map<String, Visitor> mapGreaterThan1000) {
-
+    public static void merge2MapsEx (Map<String, Visitor> map1, Map<String, Visitor> map2) {
+        map2.entrySet().forEach(en -> {
+            map1.merge(en.getKey(), en.getValue(), (v1, v2) -> {
+                System.out.println(v1.getId() + "----------" + v2.getId());
+                return null;
+            });
+        });
     }
 
     public static void main (String[] args) {
@@ -94,7 +99,7 @@ public class WhatIsMap {
 
         List<Visitor> visitorsLessThan1000 = gson.fromJson(dataLessThan1000, new TypeToken<List<Visitor>>() {
         }.getType());
-        List<Visitor> visitorsGreaterThan1000 = gson.fromJson(dataLessThan1000, new TypeToken<List<Visitor>>() {
+        List<Visitor> visitorsGreaterThan1000 = gson.fromJson(dataGreaterThan1000, new TypeToken<List<Visitor>>() {
         }.getType());
 
         /*
@@ -119,5 +124,7 @@ public class WhatIsMap {
          */
 
         merge2MapsEx(mapLessThan1000, mapGreaterThan1000);
+
+        System.out.println(mapLessThan1000.size());
     }
 }
