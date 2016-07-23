@@ -1,28 +1,7 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+package com.demo.java8.collection;
 
-/*
- * Copyright © 2016 Unified Social, Inc.
- * 180 Madison Avenue, 23rd Floor, New York, NY 10016, U.S.A.
- * All rights reserved.
- *
- * This software (the "Software") is provided pursuant to the license agreement you entered into with Unified Social,
- * Inc. (the "License Agreement").  The Software is the confidential and proprietary information of Unified Social,
- * Inc., and you shall use it only in accordance with the terms and conditions of the License Agreement.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE."  UNIFIED SOCIAL, INC. MAKES NO WARRANTIES OF ANY KIND, WHETHER
- * EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY, FITNESS
- * FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
- */
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-package com.demo.java8.collection.api;
-
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.nio.charset.Charset;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -92,6 +71,37 @@ public class WhatIsMap {
         });
     }
 
+    public static void computeEx (Map<String, Visitor> map) {
+        System.out.println("------compute (k must exist in the map)--------");
+        map.compute("1", (k, v) -> {
+                        System.out.println(k + ", " + v);
+                        v.setEmail("congdanh910@gmail.com");
+                        return v;
+                    }
+        );
+        System.out.println("------compute (k must exist in the map)--------\n");
+
+        System.out.println("------computeIfPresent (k NO need to exist in the map)--------");
+        map.computeIfPresent("-1", (k, v) -> {
+                                 System.out.println(k + ", " + v);
+                                 v.setEmail("congdanh910@gmail.com");
+                                 return v;
+                             }
+        );
+        System.out.println("------computeIfPresent (k NO need to exist in the map)--------");
+
+        System.out.println("------computeIfAbsent--------");
+        map.computeIfAbsent("-1", (k) -> {
+                                System.out.println(k);
+                                Visitor v = new Visitor();
+                                v.setId(k);
+                                return v;
+                            }
+        );
+        System.out.println("Get the key absent = " + map.get("-1"));
+        System.out.println("------computeIfAbsent--------");
+    }
+
     public static void main (String[] args) {
         Gson gson = new Gson();
         String dataLessThan1000 = WhatIsMap.loadData("/mock-data.json");
@@ -111,7 +121,7 @@ public class WhatIsMap {
             To Map<String, Visitor> ~ Map<{VisitorId}, {Visitor}>
          */
         Map<String, Visitor> mapLessThan1000 = listToMap(visitorsLessThan1000);
-        Map<String, Visitor> mapGreaterThan1000  = listToMap(visitorsGreaterThan1000);
+        Map<String, Visitor> mapGreaterThan1000 = listToMap(visitorsGreaterThan1000);
 
         /*
             Example about map and filter of Map Api
@@ -122,9 +132,20 @@ public class WhatIsMap {
         /*
             Example about merge between 2 Maps to one
          */
+        // merge2MapsEx(mapLessThan1000, mapGreaterThan1000);
+        // System.out.println(mapLessThan1000.size());
 
-        merge2MapsEx(mapLessThan1000, mapGreaterThan1000);
+        /*
+            Example compute* method
+         */
 
-        System.out.println(mapLessThan1000.size());
+        // computeEx(mapLessThan1000);
+
+
+        /*
+            Transfer list to list(list1, list2)
+         */
+
+
     }
 }
